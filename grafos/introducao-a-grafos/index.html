@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+>
+<head>
+    <title>Introdução a grafos - Matheus Francisco</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link href="/images/favicon.png" rel="icon">
+
+<link rel="canonical" href="/grafos/introducao-a-grafos/">
+
+        <meta name="author" content="Mataheus Francisco" />
+        <meta name="keywords" content="Introducao Grafos,C++,Linguagem de programação" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.cosmo.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/monokai.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+        <link href="/static/custom.css" rel="stylesheet">
+
+
+</head>
+<body>
+<!-- <script src="/theme/js/jquery.min.js"></script> -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+<img src="/images/logo.jpg" width="64"/> Matheus Francisco            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <!--
+                        <li >
+                            <a href="/category/estrutura-de-dados.html">Estrutura de dados</a>
+                        </li>
+                        <li >
+                            <a href="/category/estrutura-de-dados-em-c.html">Estrutura de dados em c</a>
+                        </li>
+                        <li >
+                            <a href="/category/github.html">Github</a>
+                        </li>
+                        <li class="active">
+                            <a href="/category/grafos.html">Grafos</a>
+                        </li>
+                        <li >
+                            <a href="/category/ia.html">Ia</a>
+                        </li>
+                        <li >
+                            <a href="/category/misc.html">Misc</a>
+                        </li>
+                -->
+                
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/about">About</a></li>
+                <li><a href="/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <div class="well well-sm">
+              <!-- <div class="panel-heading"> -->
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2017-03-05T09:28:47+05:30"> Sun 05 March 2017</time>
+    </span>
+
+        <span class="label label-default">Category</span>
+        <a href="/category/grafos.html">grafos</a>
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tags/introducao-grafos.html">Introducao Grafos</a>
+        /
+	<a href="/tags/c.html">C++</a>
+        /
+	<a href="/tags/linguagem-de-programacao.html">Linguagem de programação</a>
+    
+</footer><!-- /.post-info -->              <!-- </div> -->
+            </div>
+            <h1 class="entry-title">
+                <a href="/grafos/introducao-a-grafos/"
+                rel="bookmark"
+                title="Permalink to Introdução a grafos">
+                    Introdução a  grafos
+                </a>
+            </h1>
+
+            <div class="entry-content">
+                <p><img src="/images/introducao-a-grafos/gph.jpg" alt="Example" width="300" height="200"></p>
+<p>Fala clã, hoje gostaria de compartilhar com vocês uma postagem sobre teoria de grafos criada por um amigo meu
+<a href="https://www.facebook.com/gabrieelgear">Gabriel Ghellere</a> , então qualquer dúvida marotinha podem encher o (~~FAICEBUQUI~~) dele de msg.</p>
+<p>Então como eu sei que é de manhãzinha e ninguém vai querer ler tudo vou postar uma imagem motivadora pra todos irem até o final..<br></p>
+<p><img alt="dog" src="/images/introducao-a-grafos/dog.jpg"></p>
+<p>Essa fofura esta pedindo para ler tudo '<strong>-----------</strong>'</p>
+<p>Let's go to the post.</p>
+<h1>Introdução.</h1>
+<p>Daee galera, chegou uma hora muito esperada, vamos começar a falar sobre grafos, como esse é um
+assunto extremamente vasto nesse post vamos começar devagar mostrando os conceitos básicos e algumas implementações pra não ficar só na teoria.
+Um breve conhecimento de C++ seria interessante para acompanhar as implementações (~~maaaaaaas se você não programa em C++, também vai intender com facilidade~~).</p>
+<h1>O que é são Grafos?</h1>
+<p>Um grafo é uma estrutura formada por vértices e arcos (~~bolinhas e linhas~~) esse é um exemplo de grafo:<br>
+<img alt="grafo" src="/images/introducao-a-grafos/g.png"></p>
+<p>Nós colocamos nossas informações nas vértices, onde cada uma possui um número de identificação e os arcos são responsáveis
+ pela ligação das vértices formando um conjunto. Com o conjunto formado podemos fazer várias coisas interessantes (~~ou não~~)
+ por exemplo executar buscas, MAIS FALAÇADA...</p>
+<p>Para implementar os grafos ainda precisamos entender mais alguns conceitos importantes como: Vértices vizinho, tamanho , Dígrafos e Grau de saída e entrada.</p>
+<ul>
+<li>Vértice vizinho: Dizemos que dois vértices são vizinhos se existe um arco ligando eles (na imagem acima podemos ver que o vértice 0 é vizinho do 4 e do 1, o vértice 1 é vizinho do 0, 4 e 2 e assim segue.</li>
+<li>O tamanho de um grafo é a soma de suas vértices e arcos.</li>
+<li>Dígrafos, ou grafos dirigido ou ainda grafo orientado é um grafo onde seus arcos possuem um sentido, acrescentando o sentido no grafo do exemplo fica assim.</li>
+</ul>
+<p><img alt="graphs" src="/images/introducao-a-grafos/grafos.jpg"></p>
+<p>Isso significa que para percorrer o dígrafo temos que seguir um   caminho limitado sempre seguindo a seta,
+ou seja para chegar no  vértice 3 partindo do 0 precisamos passar primeiro pelo 4 ou como   caminho alternativo 0 – 4 – 1 – 2 – 3.</p>
+<h1>Mas como eu programo isso?</h1>
+<p>Existem várias maneiras de representar grafos, as clássicas são a matriz de adjacência e lista de adjacência. Vamos falar sobre as duas e você escolhe qual usar tendo em vista que cada uma possui vantagens e desvantagens.</p>
+<h2>Matriz de adjacência</h2>
+<p>A matriz de adjacência é uma matriz booleana com colunas e linhas representando os vértices, representamos como true (1) na matriz se dois vértices são vizinhos e false (0) se não são.<br>
+<img alt="Ta confuso?" src="/images/introducao-a-grafos/confused.jpg"><br>
+ Vamos montar a matriz do grafo anterior pra ver se melhora, lembrando que a primeira linha e a primeira coluna representam os vértices e o tamanho da matriz é igual ao número de vértices no grafo. Chamaremos a matriz de Adjacência de matrizAdj .</p>
+<p><img alt="gp" src="/images/introducao-a-grafos/gp.jpg"></p>
+<p>$$matrizAdj[5][5] = \left[\begin{array}
+{rrr}
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \
+1 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 \
+0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 1 \
+1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0  \
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \
+\end{array}\right]
+$$</p>
+<p>Como o vértice 0 é vizinho dos vértices 4 e 1 os índices da matrizAdj[0][4]  e matrizAdj[0][1] são marcados como <font color="red">true</font>,
+como o vértice 3 é vizinho dos vértices 2, 4, 5 os índices matrizAdj[3][2], matrizAdj[3][4], matrizAdj[3][5] são marcados <font color="red">true</font>.
+Essa lógica segue até marcarmos todos os índices, mas agora vamos ver isso em c++…
+A implementação da Matriz de adjacência é bem simples. Primeiro definimos a matriz:</p>
+<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">matrAdj</span><span class="p">[</span><span class="mi">5</span><span class="p">][</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">{</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,},</span>
+  <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,},</span>
+  <span class="p">{</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,},</span>
+  <span class="p">{</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,},</span>
+  <span class="p">{</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,},</span>
+  <span class="p">}</span>
+</pre></div>
+
+
+<p>Nossa matriz de ascendência está declarada, logo o grafo está construído como esse exemplo é didático não estamos guardando informações nos nós exceto a identificação, assim,  podemos implementar uma função interessante para verificar se dois vértices são ou não vizinhos.</p>
+<p>A função vizinho vai receber o número de dois vértices e retorna verdadeiro se eles são realmente vizinhos ou
+retorna <font color ="blue">false</font> ou  (~~ela só verifica se o índice dos vértices na matriz é igual a 1 ou 0~~).</p>
+<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="nf">vizinho</span><span class="p">(</span><span class="kt">int</span> <span class="n">vertice1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">vertice2</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">matrAdj</span><span class="p">[</span><span class="n">vertice1</span><span class="p">][</span><span class="n">vertice2</span><span class="p">])</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2>Lista de adjacência</h2>
+<p>Vamos complicar um pouquinho agora clã,  de adjacência essa representação possuímos um array de listas encadeadas e cada vértice do grafo representa um índice do array, essa lista possui todos os vizinhos do vértice em questão.</p>
+<p><font color="red"> <b>Atenção que para esse exemplo vamos usar o dígrafo.</b> </font></p>
+<p>Como a melhor maneira de aprender é na prática, vamos montar a lista de adjacência do nosso dígrafo já conhecido. A primeira coluna representa o array de vértices e
+a lista encadeada com seus vizinhos <font color="red"> <b>atenção que agora precisamos respeitar o sentido do dígrafo</b></font>.
+<br>
+<img alt="list" src="/images/introducao-a-grafos/list.jpg">
+<br>
+<img alt="graphs" src="/images/introducao-a-grafos/grafos.jpg"></p>
+<h4>Implementação da lista de adjacência</h4>
+<p>Para facilitar essa implementação e não fugir do foco usaremos algumas bibliotecas nativas do c++ então começamos nosso código assim:</p>
+<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;list&gt; //biblioteca para criação de listas encadeadas</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;algorithm&gt; //Vamos usar a função find da biblioteca Algorithm</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+</pre></div>
+
+
+<p>Vale salientar que temos um post sobre listas encadeadas e sua implementação nesse projeto seria um bom treino.
+Agora com as bibliotecas adicionadas temos que definir nossa classe Grafo.</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Grafo</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">V</span><span class="p">;</span>
+  <span class="n">list</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">*</span><span class="n">adj</span><span class="p">;</span> <span class="c1">//ponteiro o para o array de listas</span>
+<span class="k">public</span><span class="o">:</span>
+  <span class="n">Grafo</span><span class="p">(</span><span class="kt">int</span> <span class="n">V</span><span class="p">);</span> <span class="c1">//construtor</span>
+  <span class="kt">void</span> <span class="nf">adicionarArco</span><span class="p">(</span><span class="kt">int</span> <span class="n">vertice1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">vertice2</span><span class="p">);</span>
+
+  <span class="kt">int</span> <span class="nf">grauDeSaida</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">);</span>
+
+  <span class="kt">bool</span> <span class="nf">vizinho</span><span class="p">(</span><span class="kt">int</span> <span class="n">vertice1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">vertice2</span><span class="p">);</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<p>A variável V corresponde ao tamanho do grafo, também criamos um ponteiro para o array de listas. Em public declaramos o construtor com o que recebe o tamanho do grafo, a função adicionarArco recebe dois vértices e adiciona o vértice 2 na lista de adjacência do vértice 1, o método grauDeSaida recebe um vértice e retorna seu grau de saída e a função vizinho recebe dois vértices e retorna True se forem vizinhos ou False se não. Esses são métodos básicos e bastante úteis.</p>
+<p>O próximo passo é definir nosso construtor.</p>
+<div class="highlight"><pre><span></span><span class="n">Grafo</span><span class="o">::</span><span class="n">Grafo</span><span class="p">(</span><span class="kt">int</span> <span class="n">V</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="o">-&gt;</span><span class="n">V</span> <span class="o">=</span> <span class="n">V</span><span class="p">;</span> <span class="c1">//atribui o numero de vértices</span>
+  <span class="n">adj</span> <span class="o">=</span> <span class="k">new</span> <span class="n">list</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">[</span><span class="n">V</span><span class="p">];</span> <span class="c1">//Alocamos espaço e criamos a lista de adjacência</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Agora a função responsável por criar os arcos e adicionar os vértices ela recebe 2 vértices e adiciona o vértice 2 a lista de vértices adjacentes do vértice 1. O método push_back é responsável por adicionar o vértice no final da lista.</p>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">Grafo</span><span class="o">::</span><span class="n">adicionarArco</span><span class="p">(</span><span class="kt">int</span> <span class="n">vertice1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">vertice2</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">//adiciona vertice2 a lista de vertices adjacentes do vertice1</span>
+  <span class="n">adj</span><span class="p">[</span><span class="n">vertice1</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">vertice2</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Obtendo o grau de saída, para isso utilizamos o método size para nos mostrar o tamanho da lista encadeada (o tamanho dela corresponde ao grau de saída).</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">Grafo</span><span class="o">::</span><span class="n">grauDeSaida</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//arestas que sai do vertice</span>
+  <span class="k">return</span> <span class="n">adj</span><span class="p">[</span><span class="n">v</span><span class="p">].</span><span class="n">size</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Finalmente a função vizinho, onde usamos  o método find da biblioteca Algorithm que vai buscar na lista de adjacência do vértice1 o vértice2, se o vértice for encontrado eles são vizinhos logo retornamos true, senão retornamos false.</p>
+<div class="highlight"><pre><span></span><span class="kt">bool</span> <span class="n">Grafo</span><span class="o">::</span><span class="n">vizinho</span><span class="p">(</span><span class="kt">int</span> <span class="n">vertice1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">vertice2</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">find</span><span class="p">(</span><span class="n">adj</span><span class="p">[</span><span class="n">vertice1</span><span class="p">].</span><span class="n">begin</span><span class="p">(),</span> <span class="n">adj</span><span class="p">[</span><span class="n">vertice1</span><span class="p">].</span><span class="n">end</span><span class="p">(),</span> <span class="n">vertice2</span><span class="p">)</span> <span class="o">!=</span> <span class="n">adj</span><span class="p">[</span><span class="n">vertice1</span><span class="p">].</span><span class="n">end</span><span class="p">())</span>
+    <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+  <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Agora só falta construirmos nossa main e nela usamos os métodos anteriores para criar o grafo e fazer algumas.</p>
+<div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="c1">//criando um grafo de 6 vértices</span>
+  <span class="n">Grafo</span> <span class="n">grafo</span><span class="p">(</span><span class="mi">6</span><span class="p">);</span>
+
+  <span class="c1">//Inserindo….</span>
+  <span class="n">grafo</span><span class="p">.</span><span class="n">adicionarArco</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+  <span class="n">grafo</span><span class="p">.</span><span class="n">adicionarArco</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="n">grafo</span><span class="p">.</span><span class="n">adicionarArco</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+  <span class="n">grafo</span><span class="p">.</span><span class="n">adicionarArco</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+  <span class="n">grafo</span><span class="p">.</span><span class="n">adicionarArco</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+  <span class="n">grafo</span><span class="p">.</span><span class="n">adicionarArco</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+  <span class="n">grafo</span><span class="p">.</span><span class="n">adicionarArco</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+  <span class="c1">//Grau de saida do vertice 3 (por exemplo)</span>
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Grau de saida do vertice 3: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">grafo</span><span class="p">.</span><span class="n">grauDeSaida</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+
+  <span class="c1">//Verificando vizinhos 0 e 2 por exemplo</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">grafo</span><span class="p">.</span><span class="n">vizinho</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;2 eh vizinho de 0&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+  <span class="k">else</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;2 nem eh vizinho de 0</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2>Conclusão</h2>
+<p>Então galerinha espero que vocês gostem desta postagem, meu amigo mandou muito bem nela explicadinha
+(~~puxando saco~~) vou deixar disponível os códigos fontes, espero que não tenha ficado muito complexo ou muito superficial.
+ Muito obrigado e bons estudos qualquer dúvida basta mandar milhões de msg no(~~<a href="https://www.facebook.com/gabrieelgear">FAICEBUQUE</a>~~) dele.
+(~~hastaglogoteracoisaslegais~~).
+<a href="https://github.com/matheusfrancisco/matheusfrancisco.github.io/blob/master/artigos/introducao-grafos.pdf">Também tem o link de downlaod da postagem original que eu recebi</a></p>
+<h3>Alguns links sobre o assunto.</h3>
+<p><a href="http://www.cplusplus.com/reference/">c++</a><br>
+<a href="https://www.ime.usp.br/~pf/algoritmos_para_grafos/index.html#contents">graphs</a><br></p>
+<p><font color="#009999
+">Que a força esteja com você.
+</font></p>
+
+<p>Abração.</p>
+            </div>
+            <!-- /.entry-content -->
+    <hr/>
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'matheus-francisco'; // required: replace example with your forum shortname
+
+                    var disqus_identifier = 'introducao-a-grafos';
+                var disqus_url = '/grafos/introducao-a-grafos/';
+
+            var disqus_config = function () {
+                this.language = "pt-br";
+            };
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//matheus-francisco.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+
+<section class="well well-sm">
+    <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+              <ul class="list-group" id="social">
+                <li class="list-group-item"><a href="http://github.com/matheusfrancisco"><i class="fa fa-github-square fa-lg"></i> github</a></li>
+                <li class="list-group-item"><a href="https://twitter.com/MtChicao"><i class="fa fa-twitter-square fa-lg"></i> twitter</a></li>
+                <li class="list-group-item"><a href="linkedin.com/in/matheus-francisco"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+                <li class="list-group-item"><a href="https://www.facebook.com/matheusfranciscobatistamachado"><i class="fa fa-facebook-square fa-lg"></i> facebook</a></li>
+              </ul>
+            </li>
+
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+                <ul class="list-group" id="recentposts">
+                    <li class="list-group-item">
+                        <a href="/grafos/introducao-a-grafos/">
+                            Introdução a  grafos
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/ia/meu-primeiro-post/">
+                            Introdução a redes neurais artificias.
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/grafos/estrutura-de-dados-em-c-/">
+                            Estrutura de Dados em C <strike>we need your help</strike>
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/estrutura-de-dados/pronteiros-em-c/">
+                            Ponteiros em C
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/estrutura-de-dados-em-c/lista-em-cadeada/">
+                            Criando uma lista encadeada em C
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="list-group-item"><a href="/tags.html"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                <ul class="list-group " id="tags">
+                </ul>
+            </li>
+        <!--     <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+      <ul class="list-group" id="links">
+        <li class="list-group-item">
+            <a href="http://medium.com" target="_blank">
+                Medium
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://quora.com" target="_blank">
+                Quora
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://stackoverflow.com" target="_blank">
+                Stackoverflow
+            </a>
+        </li>
+      </ul>
+    </li>
+ -->
+    </ul>
+</section>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="well well-lg" id="footer-well">
+      <div class="container">
+      <div class="row">
+           <div class="col-sm-4">
+               <div id="RecentComments" class="dsq-widget">
+                <h3 style="margin-bottom:0.5px;">Recent Comments</h3>
+                <script type="text/javascript" src="http://matheus-francisco.disqus.com/recent_comments_widget.js?num_items=5&hide_mods=0&hide_avatars=0&avatar_size=32&excerpt_length=100"></script>
+               </div>
+
+           </div>
+           <div class="col-sm-4">
+               <h3 style="margin-bottom:0.5px;">Websites I Like</h3>
+               </br>
+               <ul style="list-style-type:circle">
+                <div style="margin-bottom: 10.5px; margin-top: 10.5px; font-size: 19px;">
+                  <li>
+                    <a href="http://medium.com" target="_blank">
+                        Medium
+                    </a>
+                  </li>
+                <div>
+                <div style="margin-bottom: 10.5px; margin-top: 10.5px; font-size: 19px;">
+                  <li>
+                    <a href="http://quora.com" target="_blank">
+                        Quora
+                    </a>
+                  </li>
+                <div>
+                <div style="margin-bottom: 10.5px; margin-top: 10.5px; font-size: 19px;">
+                  <li>
+                    <a href="http://stackoverflow.com" target="_blank">
+                        Stackoverflow
+                    </a>
+                  </li>
+                <div>
+              </ul>
+
+             <!-- // <script src="https://apis.google.com/js/platform.js" async defer></script> -->
+              <!-- <g:plusone size="standard(bubble)" data-href="http://the-data-show.com"></g:plusone> -->
+              <br>
+              
+           </div>
+           <div class="col-sm-4">
+<div id="aboutme" align="center">
+	<h3 style="margin-bottom:0.5px;">About Matheus Francisco</h3><br/>
+        <p>
+            <img width="60%" class="img-thumbnail" src="/images/headshot.jpg"/>
+        </p>
+    <p> 
+        Eu sou estudante de Engenharia de Computação pela UFSC, bolsista do CNPQ e trabalho com Machine Learning e Criptomoedas<p>and I love python <3 </p>
+    </p>
+</div>
+           </div>
+      </div>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2017 Matheus Francisco
+            &middot; Powered by <a href="http://python.org/" target="_blank">Python</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            a customized <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            and <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+   </div>
+</footer>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+<!-- Fix scrolling issues to internal HREFs that get positioned behind navbar -->
+<!-- http://stackoverflow.com/questions/10732690/offsetting-an-html-anchor-to-adjust-for-fixed-header -->
+<script src="/theme/js/href_scroll.js"></script>
+
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'matheus-francisco'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-89427393-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+</body>
+</html>

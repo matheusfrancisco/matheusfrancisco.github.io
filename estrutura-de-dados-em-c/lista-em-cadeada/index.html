@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+>
+<head>
+    <title>Criando uma lista encadeada em C - Matheus Francisco</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link href="/images/favicon.png" rel="icon">
+
+<link rel="canonical" href="/estrutura-de-dados-em-c/lista-em-cadeada/">
+
+        <meta name="author" content="Mataheus Francisco" />
+        <meta name="keywords" content="c,Linguagem de programção" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.cosmo.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/monokai.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+        <link href="/static/custom.css" rel="stylesheet">
+
+
+</head>
+<body>
+<!-- <script src="/theme/js/jquery.min.js"></script> -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+<img src="/images/logo.jpg" width="64"/> Matheus Francisco            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <!--
+                        <li >
+                            <a href="/category/estrutura-de-dados.html">Estrutura de dados</a>
+                        </li>
+                        <li class="active">
+                            <a href="/category/estrutura-de-dados-em-c.html">Estrutura de dados em c</a>
+                        </li>
+                        <li >
+                            <a href="/category/github.html">Github</a>
+                        </li>
+                        <li >
+                            <a href="/category/grafos.html">Grafos</a>
+                        </li>
+                        <li >
+                            <a href="/category/ia.html">Ia</a>
+                        </li>
+                        <li >
+                            <a href="/category/misc.html">Misc</a>
+                        </li>
+                -->
+                
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/about">About</a></li>
+                <li><a href="/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <div class="well well-sm">
+              <!-- <div class="panel-heading"> -->
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2017-01-22T16:01:47+05:30"> Sun 22 January 2017</time>
+    </span>
+
+        <span class="label label-default">Category</span>
+        <a href="/category/estrutura-de-dados-em-c.html">Estrutura de dados em C</a>
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tags/c.html">c</a>
+        /
+	<a href="/tags/linguagem-de-programcao.html">Linguagem de programção</a>
+    
+</footer><!-- /.post-info -->              <!-- </div> -->
+            </div>
+            <h1 class="entry-title">
+                <a href="/estrutura-de-dados-em-c/lista-em-cadeada/"
+                rel="bookmark"
+                title="Permalink to Criando uma lista encadeada em C">
+                    Criando uma lista encadeada em C
+                </a>
+            </h1>
+
+            <div class="entry-content">
+                <p><img alt="C" src="/images/criando-lista-encadeada/c-logo.jpg"></p>
+<h1>Introdução.</h1>
+<p>Falaaaaa galerinha estamos aqui mais uma vez para tentar ensinar algo, então é  o seguinte hoje vamos criar uma lista encadeada na linguagem C, para esse tutorial acredito que vai ser necessário um pré conhecimento de como utilizar ponteiros e sobre estruturas em c <strike>que em breve crio um tutorial de ambos os assuntos</strike>.</p>
+<h1>O que é uma lista encadeada?</h1>
+<p>Uma lista encadeada ( <i>linked list</i>)   representa uma sequência de objetos do mesmo tipo,  ou seja são uma maneira de armazenar dados com estruturas para que o programador possa criar automaticamente um novo local para armazenar dados sempre que necessário. Geralmente o programador utiliza uma definição struct que contém variáveis para guarda informações e um ponteiro para próxima struct do mesmo tipo.</p>
+<pre><code>
+    ------------------------------              ------------------------------
+    |              |             |            \ |              |             |
+    |     DATA     |     NEXT    |--------------|     DATA     |     NEXT    |
+    |              |             |            / |              |             |
+    ------------------------------              ------------------------------
+</code></pre>
+
+<h1>Criando uma struct ~~célula~~.</h1>
+<p>Galerinha primeiro vamos criar nossa struct que a partir de agora iremos chamar de célula, cada célula irá conter um objeto de algum tipo e o endereço da célula seguinte.</p>
+<div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">test</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">valor</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">test</span> <span class="o">*</span><span class="n">seg</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><img alt="celula" src="/images/criando-lista-encadeada/celula-de-lista-prox.png">
+<img alt="celula" src="/images/criando-lista-encadeada/celula-de-lista-prox.png">
+<img alt="celula" src="/images/criando-lista-encadeada/celula-de-lista-prox.png"><br></p>
+<p>Como podemos ver nas imagens nossa estrutura armazena um número inteiro e um ponteiro para a célula seguinte, sendo assim podemos inserir um número inteiro e criar uma  lista <strike>uma estrutura bem simples</strike> .</p>
+<div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">test</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">nome</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">idade</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">cpf</span><span class="p">;</span>
+    <span class="k">struct</span> <span class="n">test</span> <span class="o">*</span><span class="n">seg</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Já nessa estrutura podemos armazenar um nome, uma idade e um cpf e criar uma lista de pessoas, que você pode criar métodos de ordenação <font color="red">Heap-Sort</font>, <font color="blue">Merge-Sort</font>,  <font color="green">Quick-Sort</font> entre outros. Com isso você pode ordenar por nome, idade ou qualquer outro critério   de sua escolha <strike>irei escreve sobre esses métodos de ordenação<strike>.
+Agora iremos da o nome para a struct pois falamos que iremos chama-la de célula.</p>
+<div class="highlight"><pre><span></span> <span class="k">typedef</span> <span class="k">struct</span> <span class="n">test</span> <span class="n">celula</span><span class="p">;</span>  <span class="c1">// célula</span>
+</pre></div>
+
+
+<p>Pronto nossa struct agora é um <a href="https://www.ime.usp.br/~pf/algoritmos/aulas/footnotes/data-type.html">tipo de dado</a> chamado célula.</p>
+<h1>Inserindo na nossa lista.</h1>
+<p>Agora vamos inserir alguns elementos na nossa lista, porém  nossa lista é uma lista simplesmente encadeada com cabeça para facilitar a inserção pois existem listas simplesmente  encadeada sem cabeça, duplamente encadeadas com e sem cabeça e listas circulares simplesmente encadeadas e duplamente encadeadas, como não quero que fique muito grande o texto <strike>para não ficar chato a leitura</strike>.</p>
+<div class="highlight"><pre><span></span><span class="n">main</span><span class="p">()</span>
+         <span class="n">celula</span> <span class="n">c</span><span class="p">;</span>
+          <span class="n">celula</span><span class="o">*</span><span class="n">lst</span><span class="p">;</span>
+          <span class="n">c</span><span class="p">.</span><span class="n">seg</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+          <span class="n">lst</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">;</span>
+
+
+<span class="cm">/*método de criação de lista com cabeça diferente*/</span>
+          <span class="n">celula</span> <span class="o">*</span><span class="n">LISTA</span><span class="p">;</span>
+          <span class="n">LISTA</span> <span class="o">=</span> <span class="n">malloc</span> <span class="p">(</span><span class="k">sizeof</span> <span class="p">(</span><span class="n">celula</span><span class="p">));</span><span class="cm">/*aloca memória para não perder o endereço*/</span>
+          <span class="n">LISTA</span><span class="o">-&gt;</span><span class="n">seg</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span> <span class="cm">/*nunca esquecer de sempre apontar para null*/</span>
+</pre></div>
+
+
+<p>Neste trecho criamos uma <font color="blue">célula c</font> que é uma estrutura do tipo test que contém uma variável do tipo int e um ponteiro para célula seguinte, também foi criado uma  <font color="red">célula *lst</font> que recebe  o endereço de memória da <font color="blue">célula c</font>. As vezes convém tratar a primeira célula de uma lista encadeada como um mero marcador de início e ignorar o conteúdo da célula. Nesse caso, dizemos que a primeira célula é a cabeça.</p>
+<p><img alt="lst" src="/images/criando-lista-encadeada/lst_ord.png"></p>
+<h3>Inserindo.</h3>
+<p>Criando uma função para inserir na lista.</p>
+<div class="highlight"><pre><span></span><span class="kt">void</span>
+<span class="nf">insere</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="n">celula</span> <span class="o">*</span><span class="n">p</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="n">celula</span> <span class="o">*</span><span class="n">nova</span><span class="p">;</span>
+   <span class="n">nova</span> <span class="o">=</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span> <span class="p">(</span><span class="n">celula</span><span class="p">));</span>
+   <span class="n">nova</span><span class="o">-&gt;</span><span class="n">valor</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+   <span class="n">nova</span><span class="o">-&gt;</span><span class="n">seg</span> <span class="o">=</span> <span class="n">p</span><span class="o">-&gt;</span><span class="n">seg</span><span class="p">;</span>
+   <span class="n">p</span><span class="o">-&gt;</span><span class="n">seg</span> <span class="o">=</span> <span class="n">nova</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Esta função  recebe um número inteiro e o endereço da sua cabeça lst que definimos anteriormente, na primeira linha você cria uma célula nova e aloca memória depois armazenamos o valor inteiro na nova célula <strike>agora  nesta parte vamos tentar imaginar  </strike>, você tem uma célula <font color="red">LST--&gt;NULL</font> em seguida na linha <font color="blue">nova-&gt;seg = p-&gt;seg</font> sabendo  que <font color="green">célula *p</font> é um  ponteiro que recebeu sua lista LST, então temos que sua nova célula aponta para onde LST esta apontando ou seja para NULL e logo em seguida mudamos o ponteiro dentro de LST para a nova célula <strike> como a lista é com cabeça não precisamos verificar se o inicio é NULL pois temos já um endereço de memória que passamos para LST que foi a célula c</strike>.
+Nossa lista fica assim com a primeira inserção <font color="red">LST--&gt;VALOR--&gt;NULL</font>  quando passamos novamente o valor e a lst para inserir vamos estar inserindo entre a LST e o VALOR ou seja nosso VALOR2 será inserido desta maneira  LST--&gt;VALOR2--&gt;VALOR--&gt;NULL.</p>
+<h3>Imprimindo a lista simplesmente encadeada</h3>
+<p>Então pessoal se a parte de inserção não ficou clara como eu mexi nos ponteiros envie um email ou tente desenhar que eu envio os desenho e uma explicação porque agora iremos imprimir os valores inseridos .</p>
+<div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">imprime</span><span class="p">(</span><span class="n">celula</span> <span class="o">*</span><span class="n">lst</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">celula</span><span class="o">*</span><span class="n">aux</span><span class="p">;</span>
+    <span class="n">aux</span> <span class="o">=</span> <span class="n">lst</span><span class="o">-&gt;</span><span class="n">seg</span><span class="p">;</span>
+
+    <span class="k">while</span><span class="p">(</span><span class="n">aux</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">){</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;%i&quot;</span><span class="p">,</span> <span class="n">aux</span><span class="o">-&gt;</span><span class="n">valor</span><span class="p">);</span>
+        <span class="n">aux</span> <span class="o">=</span> <span class="n">aux</span><span class="o">-&gt;</span><span class="n">seg</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Esta aqui é uma função fácil de entender estamos passando toda nossa lista para ela, ou seja só precisamos iterar sobre ela <strike>caso sua lista seja sem cabeça você precisa verificar antes se o inicio é NULL para não ocorrer erros</strike>.<br>
+Então temos um ponteiro <font color="green">célula *aux</font> que vamos iterar sobre a lista e ir imprimindo os valores da lista iremos até ser igual a NULL ou seja enquanto o ponteiro for diferente de NULL imprimimos o valor nunca podemos esquecer de passar o ponteiro para a célula seguinte.</p>
+<h2>Conclusão</h2>
+<p>Então pessoal é só isso irei deixar um código no <a href="https://hastebin.com/fusefoyuso.cpp">hastebin</a> que está inserindo e imprimindo valores em uma lista simplesmente encadeada, também irei criar um repositório no github onde postarei todos os tipos de estrutura de dados em c para que todos possam contribuir.</p>
+<h3>Alguns site sobre lista encadeada.</h3>
+<p><a href="http://www.cprogramming.com/tutorial/c/lesson15.html">Cpprogramming</a>
+<a href="https://www.ime.usp.br/~pf/algoritmos/aulas/lista.html">Ime-usp</a>
+<a href="http://www.thegeekstuff.com/2012/08/c-linked-list-example">GeekStuff</a>
+Se alguém quiser mais programa sobre lista ou alguma estrutura de dados em C é só entrar em contato.</p>
+<p><font color="#009999
+">Que a força esteja com você.
+</font></p>
+
+<p>Abração.</p>
+            </div>
+            <!-- /.entry-content -->
+    <hr/>
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'matheus-francisco'; // required: replace example with your forum shortname
+
+                    var disqus_identifier = 'lista-em-cadeada';
+                var disqus_url = '/estrutura-de-dados-em-c/lista-em-cadeada/';
+
+            var disqus_config = function () {
+                this.language = "pt-br";
+            };
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//matheus-francisco.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+
+<section class="well well-sm">
+    <ul class="list-group list-group-flush">
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Social</span></h4>
+              <ul class="list-group" id="social">
+                <li class="list-group-item"><a href="http://github.com/matheusfrancisco"><i class="fa fa-github-square fa-lg"></i> github</a></li>
+                <li class="list-group-item"><a href="https://twitter.com/MtChicao"><i class="fa fa-twitter-square fa-lg"></i> twitter</a></li>
+                <li class="list-group-item"><a href="linkedin.com/in/matheus-francisco"><i class="fa fa-linkedin-square fa-lg"></i> linkedin</a></li>
+                <li class="list-group-item"><a href="https://www.facebook.com/matheusfranciscobatistamachado"><i class="fa fa-facebook-square fa-lg"></i> facebook</a></li>
+              </ul>
+            </li>
+
+            <li class="list-group-item"><h4><i class="fa fa-home fa-lg"></i><span class="icon-label">Recent Posts</span></h4>
+                <ul class="list-group" id="recentposts">
+                    <li class="list-group-item">
+                        <a href="/grafos/introducao-a-grafos/">
+                            Introdução a  grafos
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/ia/meu-primeiro-post/">
+                            Introdução a redes neurais artificias.
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/grafos/estrutura-de-dados-em-c-/">
+                            Estrutura de Dados em C <strike>we need your help</strike>
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/estrutura-de-dados/pronteiros-em-c/">
+                            Ponteiros em C
+                        </a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/estrutura-de-dados-em-c/lista-em-cadeada/">
+                            Criando uma lista encadeada em C
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="list-group-item"><a href="/tags.html"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+                <ul class="list-group " id="tags">
+                </ul>
+            </li>
+        <!--     <li class="list-group-item"><h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+      <ul class="list-group" id="links">
+        <li class="list-group-item">
+            <a href="http://medium.com" target="_blank">
+                Medium
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://quora.com" target="_blank">
+                Quora
+            </a>
+        </li>
+        <li class="list-group-item">
+            <a href="http://stackoverflow.com" target="_blank">
+                Stackoverflow
+            </a>
+        </li>
+      </ul>
+    </li>
+ -->
+    </ul>
+</section>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="well well-lg" id="footer-well">
+      <div class="container">
+      <div class="row">
+           <div class="col-sm-4">
+               <div id="RecentComments" class="dsq-widget">
+                <h3 style="margin-bottom:0.5px;">Recent Comments</h3>
+                <script type="text/javascript" src="http://matheus-francisco.disqus.com/recent_comments_widget.js?num_items=5&hide_mods=0&hide_avatars=0&avatar_size=32&excerpt_length=100"></script>
+               </div>
+
+           </div>
+           <div class="col-sm-4">
+               <h3 style="margin-bottom:0.5px;">Websites I Like</h3>
+               </br>
+               <ul style="list-style-type:circle">
+                <div style="margin-bottom: 10.5px; margin-top: 10.5px; font-size: 19px;">
+                  <li>
+                    <a href="http://medium.com" target="_blank">
+                        Medium
+                    </a>
+                  </li>
+                <div>
+                <div style="margin-bottom: 10.5px; margin-top: 10.5px; font-size: 19px;">
+                  <li>
+                    <a href="http://quora.com" target="_blank">
+                        Quora
+                    </a>
+                  </li>
+                <div>
+                <div style="margin-bottom: 10.5px; margin-top: 10.5px; font-size: 19px;">
+                  <li>
+                    <a href="http://stackoverflow.com" target="_blank">
+                        Stackoverflow
+                    </a>
+                  </li>
+                <div>
+              </ul>
+
+             <!-- // <script src="https://apis.google.com/js/platform.js" async defer></script> -->
+              <!-- <g:plusone size="standard(bubble)" data-href="http://the-data-show.com"></g:plusone> -->
+              <br>
+              
+           </div>
+           <div class="col-sm-4">
+<div id="aboutme" align="center">
+	<h3 style="margin-bottom:0.5px;">About Matheus Francisco</h3><br/>
+        <p>
+            <img width="60%" class="img-thumbnail" src="/images/headshot.jpg"/>
+        </p>
+    <p> 
+        Eu sou estudante de Engenharia de Computação pela UFSC, bolsista do CNPQ e trabalho com Machine Learning e Criptomoedas<p>and I love python <3 </p>
+    </p>
+</div>
+           </div>
+      </div>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2017 Matheus Francisco
+            &middot; Powered by <a href="http://python.org/" target="_blank">Python</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            a customized <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            and <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+   </div>
+</footer>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+<!-- Fix scrolling issues to internal HREFs that get positioned behind navbar -->
+<!-- http://stackoverflow.com/questions/10732690/offsetting-an-html-anchor-to-adjust-for-fixed-header -->
+<script src="/theme/js/href_scroll.js"></script>
+
+    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'matheus-francisco'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-89427393-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+
+</body>
+</html>

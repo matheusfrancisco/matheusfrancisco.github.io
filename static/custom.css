@@ -1,0 +1,21 @@
+.navbar-brand {
+  padding: 10px 15px;
+}
+/* Solutions for mobile and small screens  */
+/*
+@media (min-width: 1200px) {
+    #banner {
+        background-position: right -50px;
+        background-size: 100% auto;
+    }
+}
+*/
+
+.img-thumbnail {
+  background-color: transparent;
+  border: transparent;
+}
+
+p {
+  margin: 15px 0;
+}
