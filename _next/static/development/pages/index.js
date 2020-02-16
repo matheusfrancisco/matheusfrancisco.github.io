@@ -18844,19 +18844,19 @@ var BodyInformation = function BodyInformation() {
       lineNumber: 57
     },
     __self: this
-  }, __jsx("h1", {
+  }, __jsx("p", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 58
     },
     __self: this
-  }, " ( println \"Hello\" )"), __jsx("p", {
+  }, __jsx("h1", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60
+      lineNumber: 59
     },
     __self: this
-  }, "(println \u201CI\u2019m a ", __jsx("b", {
+  }, " ( println \"Hello\" )"), "(println \u201CI\u2019m a ", __jsx("b", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 61
@@ -18874,19 +18874,7 @@ var BodyInformation = function BodyInformation() {
       lineNumber: 61
     },
     __self: this
-  }, "UFSC."), "\u201D  \u201C"), __jsx("p", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 63
-    },
-    __self: this
-  }, "Love study about paradigms, design principals, software architecture and good practices about testing software."), __jsx("p", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 66
-    },
-    __self: this
-  }, "I belive that through technology we can impact and improve lives. \u201D  )")));
+  }, "UFSC."), "\u201D  \u201C Love study about paradigms, design principals, software architecture and good practices about testing software. I belive that through technology we can impact and improve lives. \u201D  )")));
 };
 
 var Content = function Content() {
@@ -18894,19 +18882,19 @@ var Content = function Content() {
     className: "content",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 78
+      lineNumber: 74
     },
     __self: this
   }, __jsx(Profile, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 79
+      lineNumber: 75
     },
     __self: this
   }), __jsx(BodyInformation, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 80
+      lineNumber: 76
     },
     __self: this
   })));
@@ -18917,84 +18905,84 @@ var Nav = function Nav() {
     className: "menu",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 94
+      lineNumber: 90
     },
     __self: this
   }, __jsx("nav", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 95
+      lineNumber: 91
     },
     __self: this
   }, __jsx("ul", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 96
+      lineNumber: 92
     },
     __self: this
   }, __jsx("li", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 97
+      lineNumber: 93
     },
     __self: this
   }, __jsx("a", {
     href: "#hello",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 97
+      lineNumber: 93
     },
     __self: this
   }, "Home")), __jsx("li", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 98
+      lineNumber: 94
     },
     __self: this
   }, __jsx("a", {
     href: "/blog/index.html",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 98
+      lineNumber: 94
     },
     __self: this
   }, "Blog")), __jsx("li", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 99
+      lineNumber: 95
     },
     __self: this
   }, __jsx("a", {
     href: "#projects",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 99
+      lineNumber: 95
     },
     __self: this
   }, "Projects")), __jsx("li", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 100
+      lineNumber: 96
     },
     __self: this
   }, __jsx("a", {
     href: "#ideas",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 100
+      lineNumber: 96
     },
     __self: this
   }, "Ideas")), __jsx("li", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 101
+      lineNumber: 97
     },
     __self: this
   }, __jsx("a", {
     href: "#contact",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 101
+      lineNumber: 97
     },
     __self: this
   }, "Contact")))));
@@ -19006,19 +18994,19 @@ function Home() {
   return __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 113
+      lineNumber: 109
     },
     __self: this
   }, __jsx(next_head__WEBPACK_IMPORTED_MODULE_1___default.a, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 114
+      lineNumber: 110
     },
     __self: this
   }, __jsx("title", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 115
+      lineNumber: 111
     },
     __self: this
   }, "Matheus Francisco"), __jsx("link", {
@@ -19026,19 +19014,19 @@ function Home() {
     href: "https://fonts.googleapis.com/css?family=Raleway",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 116
+      lineNumber: 112
     },
     __self: this
   })), __jsx(Nav, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 118
+      lineNumber: 114
     },
     __self: this
   }), __jsx(Content, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 119
+      lineNumber: 115
     },
     __self: this
   }));
@@ -19047,7 +19035,7 @@ function Home() {
 
 /***/ }),
 
-/***/ 3:
+/***/ 2:
 /*!********************************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2Fhome%2Fevohc%2FFiles%2Fprojects%2F100-simple-projects-frontend%2Fspa-github-page-template%2Fpages%2Findex.js ***!
   \********************************************************************************************************************************************************************************/
@@ -19070,5 +19058,5 @@ module.exports = dll_3a06a02eef51db2849d4;
 
 /***/ })
 
-},[[3,"static/runtime/webpack.js"]]]);
+},[[2,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=index.js.map
