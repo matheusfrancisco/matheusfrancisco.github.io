@@ -1,0 +1,29 @@
+{:deps {:aliases [:front]}
+ :build-defaults {:closure-defines {main.app/BASE_URL "http://localhost:8000"}}
+ :builds {:app {:target           :browser
+                :asset-path       "public/js"
+                :output-dir       "public/js"
+                :devtools         {:http-port 8000
+                                   :http-root "public"
+                                   :preloads [dev.refresh]
+                                   :reload-strategy :full}
+                ;;https://github.com/thheller/shadow-cljs/issues/854
+                :js-options       {:babel-preset-config {:targets {:chrome 80}}}
+                :dev {:modules {:main {:init-fn main.app/init}}}
+                :release {:modules {:main {:init-fn main.app/init}}
+                          :closure-defines {main.app/BASE_URL "https://matheusfrancisco.com.br/berry"}}
+                :compiler-options {:closure-warnings   {:global-this :off}
+                                   :infer-externs      :auto
+                                   :output-feature-set :es-next
+                                   :external-config {:devtools/config {:features-to-install [:formatters :hints]}}}}
+
+          :tests {:target    :browser-test
+                  :test-dir  "target/test"
+                  :ns-regexp "-test$"
+                  :devtools  {:http-port 8100
+                              :http-root "target/test"}}
+
+          :ci-tests {:target           :karma
+                     :output-to        "target/test/ci.js"
+                     :ns-regexp        "-test$"
+                     :compiler-options {:static-fns false}}}}
