@@ -11,7 +11,7 @@
                 :js-options       {:babel-preset-config {:targets {:chrome 80}}}
                 :dev {:modules {:main {:init-fn main.app/init}}}
                 :release {:modules {:main {:init-fn main.app/init}}
-                          :closure-defines {main.app/BASE_URL "https://matheusfrancisco.com.br/berry"}}
+                          :closure-defines {main.app/BASE_URL "https://matheusfrancisco.com.br"}}
                 :compiler-options {:closure-warnings   {:global-this :off}
                                    :infer-externs      :auto
                                    :output-feature-set :es-next
