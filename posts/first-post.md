@@ -21,5 +21,5 @@ Remember this is a opinated blog engine, so it may not fit for you.
 Att
 Chico
 
-any ideas or question sende me an email
+any ideas or question send me an email
 Contact: me@matheusfrancisco.com.br

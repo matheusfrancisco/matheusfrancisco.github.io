@@ -111,7 +111,13 @@
           (.then (fn [r] (.text r)))
           (.then (fn [r] (reader/read-string r)))
           (.then (fn [r]
-                   (set-infos concat r)))
+                   (let [r (map (fn [{:keys [date] :as info}]
+                                  (assoc info :date (first date)))
+                                r)]
+                     (->> r
+                          (sort-by :date)
+                          (reverse)
+                          (set-infos concat)))))
           (.catch (fn [e]
                     (prn e)
                     (set-infos concat [])))))
