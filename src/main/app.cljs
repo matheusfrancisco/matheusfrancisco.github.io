@@ -72,8 +72,6 @@
   (let [{:keys [id]} (js->cljs-key (rrd/useParams))
         {:keys [posts]}  (hooks/use-context task-context)
         {:keys [body date id title]} (first (filter #(= (str (:id %)) id) posts))]
-
-    (prn posts id)
     (d/div
      {:class-name "wrapper"}
      (d/div
