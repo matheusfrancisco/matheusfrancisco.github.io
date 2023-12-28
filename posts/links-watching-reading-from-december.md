@@ -1,4 +1,4 @@
-Title: My December dumps. Studyin in Public stuffs I did, read or watched this month.
+Title: My December dumps. Studying in Public stuffs I did, read or watched this month.
 Date: 2023-12-27
 Tags: #blog, #[[Links to Read or Watch]] 
 author: matheusfrancisco
