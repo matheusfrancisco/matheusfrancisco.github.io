@@ -1,4 +1,4 @@
-Title: Everything I read and watch January
+Title: Everything I study in depth this month (jan)
 Date: 2024-01-29
 Tags: #study-topics, #algorithms, #distribute-systems
 author: matheusfrancisco
