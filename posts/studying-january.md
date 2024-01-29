@@ -14,7 +14,7 @@ Also I start watch the course from MIT https://ocw.mit.edu/courses/6-006-introdu
 
 About distribute system it is the same thing I started a course from MIT https://pdos.csail.mit.edu/6.824/schedule.html also it will be something I may create some post.
 
-and I start learning more about LLM and AI but I felt I needed more about math to understand better so I'm finish a calculus and linear algebra course this one I don´t know how ca I post but may add some things.
+and I start learning more about LLM and AI but I felt I needed more about math to understand better so I'm finishing a calculus and linear algebra course this one I don´t know how ca I post but may add some things.
 
 att Chico
 
